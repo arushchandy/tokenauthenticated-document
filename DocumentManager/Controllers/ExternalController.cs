@@ -23,6 +23,7 @@ namespace DocumentManager.Controllers
             if (!string.IsNullOrEmpty(userData.ClientID) && !string.IsNullOrEmpty(userData.ClientKey))
             {
                 var token = TokenHelper.GenerateToken(userData.ClientID, "ExternalClient");
+                var ip = GetClientIp(Request);
                 return Request.CreateResponse(HttpStatusCode.OK, token);
             }
             else
